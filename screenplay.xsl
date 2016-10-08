@@ -6,6 +6,8 @@
   <xsl:key name="char" match="glossary/character" use="@id" />
   
   <xsl:template match="screenplay">
+    <xsl:variable name="rev" select="@rev"/>
+    <xsl:variable name="date" select="@date"/>
 
     <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">
 
@@ -16,21 +18,42 @@
                                margin-right="5mm"
                                margin-top="0mm"
                                margin-bottom="0mm"
-                               master-name="PageMaster">
+                               master-name="page">
           <fo:region-body margin-left="20mm"
                           margin-right="20mm"
                           margin-top="20mm"
                           margin-bottom="20mm"/>
+          <fo:region-after extent="10mm" />
         </fo:simple-page-master>
       </fo:layout-master-set>
 
-      <fo:page-sequence master-reference="PageMaster">
+      <fo:page-sequence master-reference="page">
+        <fo:static-content flow-name="xsl-region-after">
+          <fo:block font-size="9pt"
+                    text-align="center"
+                    font-family="monospace">
+            <fo:inline-container inline-progression-dimension="31%">
+              <fo:block text-align="left">Rev. <fo:inline text-transform="uppercase"><xsl:value-of select="$rev"/></fo:inline> ; <xsl:value-of select="$date"/></fo:block>
+            </fo:inline-container>
+            <fo:inline-container inline-progression-dimension="31%">
+              <fo:block />
+            </fo:inline-container>
+            <fo:inline-container inline-progression-dimension="31%">
+              <fo:block text-align="right">p. <fo:page-number/> of <fo:page-number-citation ref-id="the-end"/></fo:block>
+            </fo:inline-container>
+          </fo:block>
+        </fo:static-content>
+
         <fo:flow flow-name="xsl-region-body">
           <fo:block font-size="12pt" font-family="monospace">
             <xsl:apply-templates select="body"/>
+            <fo:block id="the-end"/>
           </fo:block>
         </fo:flow>
+
+
       </fo:page-sequence>
+
       
     </fo:root>
   </xsl:template>
@@ -40,7 +63,10 @@
   </xsl:template>
 
   <xsl:template match="scene">
-    <fo:block>
+    <fo:block margin-top="4mm">
+      <fo:block text-align="center">
+        <fo:inline font-weight="bold">SCENE <xsl:value-of select="@id"/></fo:inline>
+      </fo:block>
       <xsl:apply-templates/>
     </fo:block>
   </xsl:template>
