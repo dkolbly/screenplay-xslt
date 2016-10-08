@@ -10,10 +10,17 @@
     <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">
 
       <fo:layout-master-set>
-        <fo:simple-page-master page-height="297mm" page-width="210mm"
-                               margin="5mm 25mm 5mm 25mm"
+        <!-- US Letter -->
+        <fo:simple-page-master page-height="279mm" page-width="216mm"
+                               margin-left="5mm"
+                               margin-right="5mm"
+                               margin-top="0mm"
+                               margin-bottom="0mm"
                                master-name="PageMaster">
-          <fo:region-body margin="20mm 0mm 20mm 0mm"/>
+          <fo:region-body margin-left="20mm"
+                          margin-right="20mm"
+                          margin-top="20mm"
+                          margin-bottom="20mm"/>
         </fo:simple-page-master>
       </fo:layout-master-set>
 
@@ -40,11 +47,13 @@
 
   <!-- Handle <location ref="" /> -->
   <xsl:template match="location">
-    <fo:inline font-weight="bold" text-decoration="underline">
+    <fo:block font-weight="bold"
+              text-decoration="underline"
+              margin-bottom="4mm">
       <xsl:for-each select="key('location', @ref)">
         <xsl:apply-templates/>
       </xsl:for-each>
-    </fo:inline>
+    </fo:block>
   </xsl:template>
 
   <!-- Handle <description>...</description> -->
@@ -56,7 +65,8 @@
   
   <!-- Handle <character ref="" /> -->
   <xsl:template match="character">
-    <fo:block text-align="center">
+    <fo:block text-align="center"
+              margin-top="4mm">
       <xsl:for-each select="key('char', @ref)">
         <fo:inline text-transform="uppercase">
           <xsl:apply-templates/>
@@ -68,9 +78,9 @@
   <!-- Handle <paren>...</paren> -->
   <xsl:template match="paren">
     <fo:block font-style="italic"
-              text-align="right"
-              margin-left="30mm"
-              margin-right="30mm">
+              text-align="left"
+              margin-left="44mm"
+              margin-right="44mm">
       <xsl:apply-templates/>
     </fo:block>
   </xsl:template>
@@ -78,8 +88,8 @@
   <!-- Handle <dialog>...</dialog> -->
   <xsl:template match="dialog">
     <fo:block text-align="left"
-              margin-left="30mm"
-              margin-right="30mm">
+              margin-left="32mm"
+              margin-right="32mm">
       <xsl:apply-templates/>
     </fo:block>
   </xsl:template>
