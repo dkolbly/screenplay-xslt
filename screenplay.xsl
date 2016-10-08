@@ -113,7 +113,9 @@
   
   <!-- Handle <subtitle>...</subtitle> -->
   <xsl:template match="subtitle">
-    <fo:block text-align="center" font-style="italic">
+    <fo:block text-align="center"
+              font-style="italic"
+              text-decoration="underline">
       <xsl:apply-templates/>
     </fo:block>
   </xsl:template>
@@ -127,6 +129,11 @@
           <xsl:apply-templates/>
         </fo:inline>
       </xsl:for-each>
+      <xsl:choose>
+        <xsl:when test="@style">
+          <fo:inline> (<xsl:value-of select="@style" />)</fo:inline>
+        </xsl:when>
+      </xsl:choose>
     </fo:block>
   </xsl:template>
   
