@@ -78,10 +78,19 @@
   <xsl:template match="scene">
     <fo:block margin-top="4mm">
       <fo:block text-align="center">
-        <fo:inline font-weight="bold">SCENE <xsl:value-of select="@id"/></fo:inline>
+        <fo:inline font-weight="bold">SCENE <xsl:call-template name="scene-number" /></fo:inline>
       </fo:block>
       <xsl:apply-templates/>
     </fo:block>
+  </xsl:template>
+
+  <xsl:template name="scene-number">
+    <xsl:choose>
+      <xsl:when test="@id">
+        <xsl:value-of select="@id"/>
+      </xsl:when>
+      <xsl:otherwise>(<xsl:value-of select="1+count(preceding-sibling::scene)" />)</xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <!-- Handle <location ref="" /> -->
@@ -102,6 +111,13 @@
     </fo:block>
   </xsl:template>
   
+  <!-- Handle <subtitle>...</subtitle> -->
+  <xsl:template match="subtitle">
+    <fo:block text-align="center" font-style="italic">
+      <xsl:apply-templates/>
+    </fo:block>
+  </xsl:template>
+
   <!-- Handle <character ref="" /> -->
   <xsl:template match="character">
     <fo:block text-align="center"
