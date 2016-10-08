@@ -12,3 +12,15 @@ Apache FOP: https://xmlgraphics.apache.org/fop/
 
 The apache-fop directory is built and published on Docker Hub
 as `donovan/apache-fop`
+
+Running
+-------
+
+To run is fairly simple assuming xsltproc and docker are available.
+
+    xsltproc screenplay.xsl sample.xml > input.fo
+    docker run --rm -i -v $PWD:/s donovan/apache-fop /s/input.fo /s/output.pdf
+
+(it would be a simple matter to run xsltproc in the container, too,
+but I find it convenient for debugging the xsl to leave it out for now)
+

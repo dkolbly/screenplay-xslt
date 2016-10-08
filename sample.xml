@@ -1,0 +1,74 @@
+<?xml version="1.0" ?>
+
+<screenplay rev="a" date="2016-10-07">
+  <title>Riddle's Galore</title>
+
+  <glossary>
+    <location id="home">INT. HOME</location>
+    <location id="work">EXT. WORK</location>
+    <character id="alice">Alice</character>
+    <character id="bob">Bob</character>
+    <character id="eve">Eve</character>
+  </glossary>
+
+  <body>
+
+    <scene id="1">
+      <location ref="home" />
+      <description>
+        It is a dark and stormy night.
+      </description>
+
+      <description>
+        Lorem ipsum dolor sit amet, consectetur adipiscing
+        elit. Praesent eu luctus sem, eu placerat dui. Duis mattis
+        rutrum dui, sed euismod felis vehicula vel. Duis tortor ipsum,
+        fringilla at varius a, tincidunt nec turpis. Pellentesque
+        efficitur felis augue, ut dictum leo dapibus ut. Maecenas
+        interdum sem elementum, imperdiet lorem a, semper
+        purus. Vestibulum efficitur efficitur auctor.
+      </description>
+
+      <description>
+        Maecenas venenatis nibh velit, nec sollicitudin augue
+        dignissim sit amet. Integer cursus tellus eu eros efficitur,
+        et efficitur elit porta. Nam feugiat dolor ultrices magna
+        commodo, et mattis ligula sollicitudin. Nulla vehicula eros
+        sodales fringilla vestibulum. Nunc non urna aliquam, mattis
+        augue non, rhoncus velit. Aenean bibendum luctus dui in
+        gravida. Nunc at orci vel sapien eleifend auctor vel a
+        erat. Quisque sit amet aliquam mauris. Suspendisse
+        sollicitudin ipsum elit. Suspendisse bibendum gravida
+        dignissim. Ut at nulla vehicula, molestie libero sit amet,
+        eleifend lectus.
+      </description>
+    </scene>
+  
+  <scene id="2">
+    <location ref="work" />
+    <description>
+      Ut dignissim maximus sapien, eu ultrices nisl lobortis
+      ac. Maecenas vel consequat ante. Suspendisse tincidunt convallis
+      mollis. Nam ac ex non orci tempor cursus sed congue
+      metus. Maecenas et interdum risus. Interdum et malesuada fames
+      ac ante ipsum primis in faucibus. Curabitur pellentesque velit
+      nec urna varius, nec aliquet elit malesuada. Cras ultricies in
+      tortor vel laoreet. Praesent eget ex eget mauris aliquet
+      vestibulum vitae sed quam. Suspendisse suscipit dui sem, vel
+      fringilla diam ornare non. Aenean sit amet fermentum
+      dui. Vestibulum ornare luctus elementum.
+    </description>
+
+<character ref="alice" />
+<paren>whispering</paren>
+<dialog>Here is something secret.</dialog>
+<character ref="bob" />
+<dialog>Thank you</dialog>
+<character ref="eve" />
+<paren>chuckling</paren>
+<dialog>No... Thank you!</dialog>
+
+
+  </scene>
+  </body>
+</screenplay>
