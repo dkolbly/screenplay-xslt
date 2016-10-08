@@ -4,10 +4,10 @@
 
   <xsl:key name="location" match="glossary/location" use="@id" />
   <xsl:key name="char" match="glossary/character" use="@id" />
+  <xsl:variable name="rev" select="screenplay/@rev"/>
+  <xsl:variable name="date" select="screenplay/@date"/>
   
   <xsl:template match="screenplay">
-    <xsl:variable name="rev" select="@rev"/>
-    <xsl:variable name="date" select="@date"/>
 
     <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">
 
@@ -45,7 +45,8 @@
         </fo:static-content>
 
         <fo:flow flow-name="xsl-region-body">
-          <fo:block font-size="12pt" font-family="monospace">
+          <xsl:apply-templates select="title"/>
+          <fo:block font-size="12pt" font-family="RobotoMono">
             <xsl:apply-templates select="body"/>
             <fo:block id="the-end"/>
           </fo:block>
@@ -56,6 +57,18 @@
 
       
     </fo:root>
+  </xsl:template>
+
+  <xsl:template match="title">
+    <fo:block text-align="center" font-weight="bold" font-size="18pt">
+      <xsl:apply-templates/>
+    </fo:block>
+    <fo:block text-align="center" font-size="12pt">
+      Revision: <fo:inline text-transform="uppercase"><xsl:value-of select="$rev"/></fo:inline>
+    </fo:block>
+    <fo:block text-align="center" font-size="12pt">
+      Date: <xsl:value-of select="$date"/>
+    </fo:block>
   </xsl:template>
 
   <xsl:template match="body">

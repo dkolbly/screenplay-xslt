@@ -1,0 +1,17 @@
+#! /bin/sh
+
+FOP=/fop/fop-2.1
+
+# build the classpath
+
+CP=$FOP/build/fop.jar
+
+for i in $FOP/lib/*.jar
+do CP=$CP:$i
+done
+
+# generate metrics
+for i in /fop/fonts/*.ttf
+do echo "GENERATING METRICS FOR $i"
+   java -cp $CP org.apache.fop.fonts.apps.TTFReader $i ${i%.ttf}.xml
+done
