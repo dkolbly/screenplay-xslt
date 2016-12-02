@@ -31,6 +31,7 @@
         <fo:static-content flow-name="xsl-region-after">
           <fo:block font-size="9pt"
                     text-align="center"
+                    color="#33f"
                     font-family="monospace">
             <fo:inline-container inline-progression-dimension="31%">
               <fo:block text-align="left">Rev. <fo:inline text-transform="uppercase"><xsl:value-of select="$rev"/></fo:inline> ; <xsl:value-of select="$date"/></fo:block>
@@ -96,8 +97,7 @@
   <!-- Handle <location ref="" /> -->
   <xsl:template match="location">
     <fo:block font-weight="bold"
-              text-decoration="underline"
-              margin-bottom="4mm">
+              text-decoration="underline">
       <xsl:for-each select="key('location', @ref)">
         <xsl:apply-templates/>
       </xsl:for-each>
@@ -106,7 +106,8 @@
 
   <!-- Handle <description>...</description> -->
   <xsl:template match="description">
-    <fo:block font-style="italic">
+    <fo:block font-style="italic"
+              margin-top="4mm">
       <xsl:apply-templates/>
     </fo:block>
   </xsl:template>
